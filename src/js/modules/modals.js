@@ -36,7 +36,7 @@ export const modals = () => {
 
                 btnPressed = true;
 
-                if(destroy){
+                if (destroy) {
                     trigger.remove();
                 }
 
@@ -95,14 +95,14 @@ export const modals = () => {
 
     }
 
-    const openByScroll = (selector) =>{
+    const openByScroll = (selector) => {
         const scrollHeight = Math.max(document.documentElement.scrollHeight,
             document.body.scrollHeight)
-        window.addEventListener('scroll', () =>{
-            if(!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >=
-                scrollHeight)){
-                    document.querySelector(selector).click();
-                }
+        window.addEventListener('scroll', () => {
+            if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >=
+                scrollHeight)) {
+                document.querySelector(selector).click();
+            }
         })
     }
 
@@ -118,7 +118,7 @@ export const modals = () => {
         modalSelector: '.popup-consultation',
         closeSelector: '.popup-consultation .popup-close'
     });
-    
+
     bindModal({
         triggersSelector: '.fixed-gift',
         modalSelector: '.popup-gift',

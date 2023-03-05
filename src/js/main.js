@@ -7,14 +7,14 @@ window.addEventListener('DOMContentLoaded', () => {
     sliders({
         slidesSelector: '.feedback-slider-item',
         dir: '',
-        prev: '.main-prev-btn', 
+        prev: '.main-prev-btn',
         next: '.main-next-btn'
     });
 
     sliders({
         slidesSelector: '.main-slider-item',
         dir: 'vertical',
-        prev: '', 
-        next: ''
+        prev: '.main-prev-btn',
+        next: '.main-next-btn'
     });
 })

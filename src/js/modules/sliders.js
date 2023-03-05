@@ -26,10 +26,9 @@ export const sliders = ({ slidesSelector, dir, prev, next }) => {
         showSlides(slideIndex += n);
     }
 
-    try {
-        const prevBtn = document.querySelector(prev);
-        const nextBtn = document.querySelector(next);
-
+    const prevBtn = document.querySelector(prev);
+    const nextBtn = document.querySelector(next);
+    if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
             changeSlides(-1);
             slides[slideIndex - 1].classList.remove('slideInLeft');
@@ -42,9 +41,6 @@ export const sliders = ({ slidesSelector, dir, prev, next }) => {
             slides[slideIndex - 1].classList.remove('slideInRight');
             slides[slideIndex - 1].classList.add('slideInLeft');
         });
-
-    } catch (e) {
-
     }
 
     const activateAnimation = () => {
