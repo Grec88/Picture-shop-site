@@ -47,7 +47,7 @@ export const modals = () => {
             });
             
             toggleModal(modal, "none", "");
-            document.body.style.marginRight = `0px`;
+            document.body.style.marginRight = `0`;
         });
 
         modal.addEventListener('click', (e) => {
@@ -56,14 +56,14 @@ export const modals = () => {
                     window.style.display = "none";
                 });
                 toggleModal(modal, "none", "");
-                document.body.style.marginRight = `0px`;
+                document.body.style.marginRight = `0`;
             }
         });
 
         addEventListener("keydown", (e) => {
             if (e.code === "Escape") {
                 toggleModal(modal, "none", "");
-                document.body.style.marginRight = `0px`;
+                document.body.style.marginRight = `0`;
             }
         });
     }
