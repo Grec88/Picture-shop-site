@@ -40,15 +40,9 @@ export const modals = () => {
                     trigger.remove();
                 }
 
-                console.log({windows});
-
                 windows.forEach(window => {
-                    console.log(window);
-                    console.log('45454564');
                     window.style.display = "none";
-                    console.log(window);
                     window.classList.add('animated', 'fadeIn');
-                    console.log(window);
                 });
 
                 toggleModal(modal, "block", "hidden");
