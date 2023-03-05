@@ -25,7 +25,7 @@ export const modals = () => {
         const triggers = document.querySelectorAll(triggersSelector);
         const modal = document.querySelector(modalSelector);
         const close = document.querySelector(closeSelector);
-        const windows = document.querySelectorAll(['data-modal']);
+        const windows = document.querySelectorAll("[data-modal]");
         const scroll = calcScroll();
 
         triggers.forEach(trigger => {
@@ -40,9 +40,15 @@ export const modals = () => {
                     trigger.remove();
                 }
 
+                console.log({windows});
+
                 windows.forEach(window => {
+                    console.log(window);
+                    console.log('45454564');
                     window.style.display = "none";
+                    console.log(window);
                     window.classList.add('animated', 'fadeIn');
+                    console.log(window);
                 });
 
                 toggleModal(modal, "block", "hidden");
