@@ -38,12 +38,12 @@ export const form = () => {
         })
     }
 
-    uploads.forEach(upload =>{
+    uploads.forEach(upload => {
         upload.addEventListener('input', () => {
-            console.log(upload.files[0]);
-            const arr = upload.files[0].name.split('.');
-            let dots = arr[0].length > 5 ? dots = "..." : dots = ".";
-            const name =  arr[0].substring(0, 6) + dots + arr[1];
+            const file = target.files[0];
+            const [fileName, fileExt] = file.name.split('.');
+            const dots = fileName.length > 6 ? '...' : '.';
+            const name = `${fileName.substring(0, 6)} ${dots} ${fileExt}`;
             upload.previousElementSibling.textContent = name;
         })
     })
@@ -72,15 +72,13 @@ export const form = () => {
             statusMessage.appendChild(textMessage);
 
             const formData = new FormData(form);
-            const api = form.closest('.popup-design') 
-            || form.classList.contains('calc_form')
-             ? path.designer : path.question;
-            console.log(api);
+            const api = form.closest('.popup-design')
+                || form.classList.contains('calc_form')
+                ? path.designer : path.question;
 
 
             postData(api, formData)
                 .then(res => {
-                    console.log({ res });
                     statusImg.setAttribute('src', message.ok);
                     textMessage.textContent = message.success;
                 })
@@ -90,13 +88,14 @@ export const form = () => {
                 })
                 .finally(() => {
                     clearInputs();
-                    // setTimeout(() => {
-                    //     statusMessage.remove();
-                    //     form.style.display = 'block';
-                    //     form.classList.remove('fadeOutUp');
-                    //     form.classList.add('fadeInUp');
+                    setTimeout(() => {
+                        console.log(1);
+                        statusMessage.remove();
+                        form.style.display = 'block';
+                        form.classList.remove('fadeOutUp');
+                        form.classList.add('fadeInUp');
 
-                    // }, 5000);
+                    }, 5000);
                 });
         })
     })
