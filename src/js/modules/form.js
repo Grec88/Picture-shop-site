@@ -39,8 +39,8 @@ export const form = () => {
     }
 
     uploads.forEach(upload => {
-        upload.addEventListener('input', () => {
-            const file = target.files[0];
+        upload.addEventListener('input', (e) => {
+            const file = e.target.files[0];
             const [fileName, fileExt] = file.name.split('.');
             const dots = fileName.length > 6 ? '...' : '.';
             const name = `${fileName.substring(0, 6)} ${dots} ${fileExt}`;
