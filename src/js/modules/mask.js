@@ -20,7 +20,7 @@ export const mask = (selector) => {
         const matrix = '+7 (___) ___ __ __';
         let i = 0;
         const def = matrix.replace(/\D/g, '');
-        let val = elem.value.replace(/\D/g, '');
+        const val = elem.value.replace(/\D/g, '');
 
         if(def.length >= val.length){
             val = def;
