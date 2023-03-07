@@ -3,7 +3,8 @@ export const checkTextInputs = (selector) => {
 
     txtInputs.forEach(txtInput => {
         txtInput.addEventListener('keypress', (e) => {
-            if(e.key.match(/[^а-яё 0-9]/ig)){
+            const regRuText = /[^а-яё 0-9]/ig;
+            if(e.key.match(regRuText)){
                 e.preventDefault();
             }
         })
