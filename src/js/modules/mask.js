@@ -3,9 +3,9 @@ export const mask = (selector) => {
     const setCursorPosition = (pos, elem) => {
         elem.focus();
 
-        if(elem.setSelectionRange){
+        if (elem.setSelectionRange) {
             elem.setSelectionRange(pos, pos)
-        }else if(elem.createTextRange){
+        } else if (elem.createTextRange) {
             const range = elem.createTextRange();
 
             range.collapse(true);
@@ -14,7 +14,7 @@ export const mask = (selector) => {
             range.select()
         }
     };
- 
+
     const createMask = (event) => {
         const elem = event.target;
         const matrix = '+7 (___) ___ __ __';
@@ -22,19 +22,19 @@ export const mask = (selector) => {
         const def = matrix.replace(/\D/g, '');
         const val = elem.value.replace(/\D/g, '');
 
-        if(def.length >= val.length){
+        if (def.length >= val.length) {
             val = def;
         }
 
         elem.value = matrix.replace(/./g, (a) => {
-            return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) 
-            : i >= val.length ? '' : a;
+            return /[_\d]/.test(a) && i < val.length ? val.charAt(i++)
+                : i >= val.length ? '' : a;
         })
 
-        if(event.type === 'blur') {
-            if(elem.value.length == 2){
+        if (event.type === 'blur') {
+            if (elem.value.length == 2) {
                 elem.value = '';
-            }else{
+            } else {
                 setCursorPosition(elem.value.length, elem)
             }
         }

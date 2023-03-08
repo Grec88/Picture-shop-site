@@ -5,7 +5,7 @@ export const showMoreStyles = (trigger, wrapper) => {
     const btn = document.querySelector(trigger);
 
     const createCards = (responses) => {
-        responses.forEach(({src, title, link}) => {
+        responses.forEach(({ src, title, link }) => {
             let card = document.createElement('div');
 
             card.classList.add('animated', 'fadeInUp', "col-sm-3", "col-sm-offset-0", "col-xs-10", "col-xs-offset-1");
@@ -16,7 +16,7 @@ export const showMoreStyles = (trigger, wrapper) => {
                 <a href=${link}>Подробнее</a>
         </div>
             `;
-             
+
 
             document.querySelector(wrapper).appendChild(card);
         });
@@ -26,6 +26,6 @@ export const showMoreStyles = (trigger, wrapper) => {
         getResource('http://localhost:3000/styles')
             .then(res => createCards(res))
             .catch(error => console.log(error))
-            e.target.remove();
+        e.target.remove();
     });
 };
