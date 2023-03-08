@@ -10,7 +10,7 @@ export const calc = ({ size, material, options, promo, res }) => {
 
         if (sizeBlock.value == '' || materialBlock.value == '') {
             resBlock.textContent = "Пожалуйста, выберите размер и материал картины.";
-        } else if (promoBlock.value === "IWANTPOPART") {
+        } else if (promoBlock.value.toUpperCase() === "IWANTPOPART") {
             resBlock.textContent = Math.round(sum * 0.7);
         } else {
             resBlock.textContent = sum;
