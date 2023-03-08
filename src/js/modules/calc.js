@@ -15,7 +15,7 @@ export const calc = ({ size, material, options, promo, res }) => {
         } else {
             resBlock.textContent = sum;
         }
-    }
+    };
 
     sizeBlock.addEventListener('change', calcFunc);
     materialBlock.addEventListener('change', calcFunc);
