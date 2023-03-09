@@ -1,6 +1,6 @@
 import {
     modals, sliders, form, mask, checkTextInputs,
-    showMoreStyles, calc
+    showMoreStyles, calc, filter
 } from "./modules";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -32,4 +32,6 @@ window.addEventListener('DOMContentLoaded', () => {
         promo: '.promocode',
         res: '.calc-price'
     });
+
+    filter();
 })
