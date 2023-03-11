@@ -1,11 +1,9 @@
  import {postData} from '../services/requests';
 
 export const form = () => {
-    const forms = document.querySelectorAll('form');
-    const inputs = document.querySelectorAll('input');
-    const uploads = document.querySelectorAll('[name="upload"');
-
-    // checkNumInputs('input[name="user_phone"]');
+    const forms:NodeListOf<HTMLFormElement> = document.querySelectorAll('form');
+    const inputs:NodeListOf<HTMLInputElement> = document.querySelectorAll('input');
+    const uploads = document.querySelectorAll('[name="upload"') as NodeListOf<HTMLElement>;
 
     const message = {
         loading: 'Загрузка',
@@ -26,19 +24,23 @@ export const form = () => {
             input.value = "";
         });
         uploads.forEach(upload => {
-            upload.previousElementSibling.textContent = "Файл не выбран";
+            (upload.previousElementSibling as HTMLElement).textContent = "Файл не выбран";
         })
     }
 
     uploads.forEach(upload => {
         upload.addEventListener('input', (e) => {
-            const file = e.target.files[0];
+            const target = e.target as HTMLInputElement;
+            const files = target.files as FileList;
+            const file = files[0]; 
+            if(file){
             const [fileName, fileExt] = file.name.split('.');
             const dots = fileName.length > 6 ? '...' : '.';
             const name = `${fileName.substring(0, 6)} ${dots} ${fileExt}`;
-            upload.previousElementSibling.textContent = name;
+            (upload.previousElementSibling as HTMLElement).textContent = name;
+            }
         })
-    })
+      })
 
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
@@ -46,6 +48,7 @@ export const form = () => {
 
             const statusMessage = document.createElement('div');
             statusMessage.classList.add('status');
+            if(form.parentNode)
             form.parentNode.appendChild(statusMessage);
 
             form.classList.add('animated', 'fadeOutUp');
