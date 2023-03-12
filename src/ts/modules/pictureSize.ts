@@ -11,7 +11,7 @@ export const pictureSize = (imgSelector: string): void => {
     };
 
     const hideImg = (block:HTMLElement):void => {
-        const img = block.querySelector('img') as HTMLImageElement;
+        const img = block.querySelector('img') as any;
 
         img.src = img.src.slice(0, -6) + '.png';
         block.querySelectorAll('p:not(.sizes-hit)').forEach(p => {
