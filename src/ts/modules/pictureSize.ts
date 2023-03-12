@@ -1,3 +1,12 @@
+import { Cloudinary } from "@cloudinary/url-gen";
+
+const cld = new Cloudinary({
+    cloud: {
+      cloudName: "dyvmnrk8q"
+    }
+  });
+  
+
 export const pictureSize = (imgSelector: string): void => {
     const blocks: NodeListOf<HTMLElement> = document.querySelectorAll(imgSelector);
 
