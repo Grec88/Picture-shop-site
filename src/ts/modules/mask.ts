@@ -1,12 +1,12 @@
-export const mask = (selector) => {
+export const mask = (selector:string) => {
 
-    const setCursorPosition = (pos, elem) => {
+    const setCursorPosition = (pos: number, elem: HTMLInputElement) => {
         elem.focus();
 
         if (elem.setSelectionRange) {
             elem.setSelectionRange(pos, pos)
-        } else if (elem.createTextRange) {
-            const range = elem.createTextRange();
+        } else if ((elem as any).createTextRange) {
+            const range = (elem as any).createTextRange();
 
             range.collapse(true);
             range.moveEnd('charcater', pos);
@@ -15,12 +15,12 @@ export const mask = (selector) => {
         }
     };
 
-    const createMask = (event) => {
-        const elem = event.target;
+    const createMask = (event: Event) => {
+        const elem = event.target as HTMLInputElement;
         const matrix = '+7 (___) ___ __ __';
         let i = 0;
-        const def = matrix.replace(/\D/g, '');
-        const val = elem.value.replace(/\D/g, '');
+        const def:string = matrix.replace(/\D/g, '');
+        let val:string = elem.value.replace(/\D/g, '');
 
         if (def.length >= val.length) {
             val = def;

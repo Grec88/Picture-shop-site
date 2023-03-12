@@ -1,8 +1,8 @@
-export const modals = () => {
+export const modals = (): void => {
 
-    let btnPressed = false;
+    let btnPressed: boolean = false;
 
-    const calcScroll = () => {
+    const calcScroll = ():number => {
         const div = document.createElement('div');
 
         div.style.width = '50px';
@@ -15,18 +15,26 @@ export const modals = () => {
 
     }
 
-    const toggleModal = (selec, disp, overfl) => {
-        selec.style.display = disp;
-        document.body.style.overflow = overfl;
+    const toggleModal = (selector:HTMLElement, display:string, overflow:string):void => {
+        selector.style.display = display;
+        document.body.style.overflow = overflow;
     };
 
+    interface IBind {
+        triggersSelector:string,
+        modalSelector:string,
+        closeSelector:string,
+        destroy?: boolean
 
-    const bindModal = ({ triggersSelector, modalSelector, closeSelector, destroy = false }) => {
-        const triggers = document.querySelectorAll(triggersSelector);
-        const modal = document.querySelector(modalSelector);
-        const close = document.querySelector(closeSelector);
-        const windows = document.querySelectorAll("[data-modal]");
+    }
+
+    const bindModal = (modalToggle: IBind) => {
+        const triggers:NodeListOf<HTMLElement> = document.querySelectorAll(modalToggle.triggersSelector);
+        const modal = document.querySelector(modalToggle.modalSelector) as HTMLElement;
+        const close = document.querySelector(modalToggle.closeSelector) as HTMLElement;
+        const windows:NodeListOf<HTMLElement> = document.querySelectorAll("[data-modal]");
         const scroll = calcScroll();
+        modalToggle.destroy = false;
 
         triggers.forEach(trigger => {
             trigger.addEventListener('click', (e) => {
@@ -36,7 +44,7 @@ export const modals = () => {
 
                 btnPressed = true;
 
-                if (destroy) {
+                if (modalToggle.destroy) {
                     trigger.remove();
                 }
 
@@ -77,31 +85,31 @@ export const modals = () => {
         });
     }
 
-    const showModalByTime = (selector, time) => {
+    const showModalByTime = (selector:string, time:number):void => {
         setTimeout(() => {
-            let display = false;
+            let display:boolean = false;
             document.querySelectorAll('[data-modal]').forEach(modal => {
                 if (getComputedStyle(modal).display !== 'none') {
-                    display = 'block';
+                    display = true;
                 }
             });
 
             if (!display) {
-                toggleModal(document.querySelector(selector), "block", "hidden");
-                const scroll = calcScroll();
+                toggleModal((document.querySelector(selector) as HTMLElement), "block", "hidden");
+                const scroll:number = calcScroll();
                 document.body.style.marginRight = `${scroll}px`;
             }
         }, time);
 
     }
 
-    const openByScroll = (selector) => {
-        const scrollHeight = Math.max(document.documentElement.scrollHeight,
+    const openByScroll = (selector:string) => {
+        const scrollHeight:number = Math.max(document.documentElement.scrollHeight,
             document.body.scrollHeight)
         window.addEventListener('scroll', () => {
             if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >=
                 scrollHeight)) {
-                document.querySelector(selector).click();
+                (document.querySelector(selector) as HTMLElement).click();
             }
         })
     }

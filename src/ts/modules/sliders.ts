@@ -1,9 +1,16 @@
-export const sliders = ({ slidesSelector, dir, prev, next }) => {
-    let slideIndex = 1;
-    let paused = false;
-    const slides = document.querySelectorAll(slidesSelector);
+export interface ISlide {
+    slidesSelector: string,
+    dir: string,
+    prev: string,
+    next: string
+}
 
-    const showSlides = (n) => {
+export const sliders = (slider: ISlide) => {
+    let slideIndex = 1;
+    let paused: number = 0;
+    const slides: NodeListOf<HTMLElement> = document.querySelectorAll(slider.slidesSelector);
+
+    const showSlides = (n: number) => {
         if (n > slides.length) {
             slideIndex = 1;
         }
@@ -22,12 +29,12 @@ export const sliders = ({ slidesSelector, dir, prev, next }) => {
 
     showSlides(slideIndex);
 
-    const changeSlides = (n) => {
+    const changeSlides = (n: number) => {
         showSlides(slideIndex += n);
     }
 
-    const prevBtn = document.querySelector(prev);
-    const nextBtn = document.querySelector(next);
+    const prevBtn = document.querySelector(slider.prev);
+    const nextBtn = document.querySelector(slider.next);
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', () => {
             changeSlides(-1);
@@ -44,7 +51,7 @@ export const sliders = ({ slidesSelector, dir, prev, next }) => {
     }
 
     const activateAnimation = () => {
-        if (dir === 'vertical') {
+        if (slider.dir === 'vertical') {
             paused = setInterval(() => {
                 changeSlides(1);
                 slides[slideIndex - 1].classList.add('slideInDown');
@@ -58,13 +65,13 @@ export const sliders = ({ slidesSelector, dir, prev, next }) => {
         }
     }
 
-    slides[0].parentNode.addEventListener('mouseenter', () => {
+    (slides[0].parentNode as HTMLElement).addEventListener('mouseenter', () => {
         clearInterval(paused);
-    })
+    });
 
-    slides[0].parentNode.addEventListener('mouseleave', () => {
+    (slides[0].parentNode as HTMLElement).addEventListener('mouseleave', () => {
         activateAnimation();
-    })
+    });
 
     activateAnimation();
 

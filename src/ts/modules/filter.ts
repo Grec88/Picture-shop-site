@@ -1,11 +1,11 @@
-export const filter = () => {
-    const menu = document.querySelector('.portfolio-menu');
-    const buttons = menu.querySelectorAll('li');
-    const wrapper = document.querySelector('.portfolio-wrapper');
-    const markAll = wrapper.querySelectorAll('.all');
-    const no = document.querySelector('.portfolio-no');
+export const filter = ():void => {
+    const menu = document.querySelector('.portfolio-menu') as HTMLElement;
+    const buttons:NodeListOf<HTMLElement> = menu.querySelectorAll('li');
+    const wrapper = document.querySelector('.portfolio-wrapper')as HTMLElement;
+    const markAll:NodeListOf<HTMLElement> = wrapper.querySelectorAll('.all');
+    const no = document.querySelector('.portfolio-no') as HTMLElement;
 
-    const typeFilter = (markType) => {
+    const typeFilter = (markType:NodeListOf<HTMLElement> | null) => {
         markAll.forEach(mark => {
             mark.style.display = "none";
             mark.classList.remove('animated', 'fadeIn');
@@ -30,13 +30,13 @@ export const filter = () => {
             if(button.className !== "grandmother" && button.className !== "granddad"){
             typeFilter( wrapper.querySelectorAll(`.${button.className}`));
             } else {
-                typeFilter();
+                typeFilter(null);
             }
         });
     })
 
-    menu.addEventListener('click', (e) => {
-        let target = e.target;
+    menu.addEventListener('click', (e:MouseEvent) => {
+        let target = e.target as Element;
 
         if (target && target.tagName == "LI") {
             buttons.forEach(button => button.classList.remove('active'));
