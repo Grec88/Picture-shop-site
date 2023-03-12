@@ -1,6 +1,6 @@
 import {
     modals, sliders, form, mask, checkTextInputs,
-    showMoreStyles, calc, filter
+    showMoreStyles, calc, filter, pictureSize
 } from "./modules";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -34,4 +34,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     filter();
+
+    pictureSize(".sizes-block");
 })
