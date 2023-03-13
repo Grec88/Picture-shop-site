@@ -1,6 +1,6 @@
 import {
     modals, sliders, form, mask, checkTextInputs,
-    showMoreStyles, calc, filter, pictureSize
+    showMoreStyles, calc, filter, pictureSize, accordion
 } from "./modules";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -36,4 +36,6 @@ window.addEventListener('DOMContentLoaded', () => {
     filter();
 
     pictureSize(".sizes-block");
+
+    accordion('.accordion-heading');
 })
