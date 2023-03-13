@@ -1,4 +1,4 @@
-export const accordion = (triggersSelector: string, itemsSelector: string): void => {
+export const accordion = (triggersSelector: string): void => {
     const buttons: NodeListOf<HTMLElement> = document.querySelectorAll(triggersSelector);
 
     buttons.forEach(button => {

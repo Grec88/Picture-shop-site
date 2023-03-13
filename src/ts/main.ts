@@ -1,6 +1,6 @@
 import {
     modals, sliders, form, mask, checkTextInputs,
-    showMoreStyles, calc, filter, pictureSize, accordion
+    showMoreStyles, calc, filter, pictureSize, accordion, burger
 } from "./modules";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -38,4 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
     pictureSize(".sizes-block");
 
     accordion('.accordion-heading');
+
+    burger('.burger-menu', '.burger');
 })

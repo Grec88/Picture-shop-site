@@ -98,7 +98,7 @@ h4 {
 
 .button-transparent:before {
   content: '';
-  background: url("../img/camera.svg") no-repeat center;
+  background: url("https://res.cloudinary.com/dyvmnrk8q/image/upload/v1678647085/camera_dlw2aw.svg") no-repeat center;
   width: 1.6rem;
   height: 1.6rem;
   display: inline-block;
@@ -189,7 +189,7 @@ h4 {
 
 .header-menu li a:after {
   content: '';
-  background-image: url("../img/down-arrow.svg");
+  background-image: url("https://res.cloudinary.com/dyvmnrk8q/image/upload/v1678647087/down-arrow_qcqfva.svg");
   margin-left: 0.7rem;
   width: 1.2rem;
   height: 1rem;
@@ -313,7 +313,7 @@ h4 {
 
 .main .file_upload>button:before {
   content: '';
-  background: url("../img/camera.svg") no-repeat center;
+  background: url("https://res.cloudinary.com/dyvmnrk8q/image/upload/v1678647085/camera_dlw2aw.svg") no-repeat center;
   width: 1.6rem;
   height: 1.6rem;
   display: inline-block;
@@ -711,7 +711,7 @@ h4 {
 
 .calc .file_upload>button:before {
   content: '';
-  background: url("../img/camera.svg") no-repeat center;
+  background: url("https://res.cloudinary.com/dyvmnrk8q/image/upload/v1678647085/camera_dlw2aw.svg") no-repeat center;
   width: 1.6rem;
   height: 1.6rem;
   display: inline-block;
