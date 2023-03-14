@@ -1,66 +1,46 @@
-export const scrolling = (upSelector: string): void => {
-    const upElem = document.querySelector(upSelector) as HTMLElement;
+export interface IBtns {
+    upSelector: string,
+    stylesSelector: string,
+    portfolioSelector: string,
+    oftenQuestionsSelector: string, 
+    footerSelector:string,
+    schemeSelector:string
+}
+
+export const scrolling = (btns: IBtns): void => {
+    const upBtn = document.querySelectorAll(btns.upSelector) as NodeListOf<HTMLAnchorElement>;
+    const stylesBtns = document.querySelectorAll(btns.stylesSelector) as NodeListOf<HTMLAnchorElement>;
+    const footerBtns = document.querySelectorAll(btns.footerSelector) as NodeListOf<HTMLAnchorElement>;
+    const schemeBtns = document.querySelectorAll(btns.schemeSelector) as NodeListOf<HTMLAnchorElement>;
+    const portfolioBtns = document.querySelectorAll(btns.portfolioSelector) as NodeListOf<HTMLAnchorElement>;
+    const oftenQuestionsBtns = document.querySelectorAll(btns.oftenQuestionsSelector) as NodeListOf<HTMLAnchorElement>;
+
     window.addEventListener('scroll', () => {
-        if (document.documentElement.scrollTop > 1650) {
-            upElem.classList.add('animated', 'fadeIn');
-            upElem.classList.remove('fadeOut');
-        } else {
-            upElem.classList.add('animated', 'fadeOut');
-            upElem.classList.remove('fadeIn');
+        if (document.documentElement.scrollTop > 1550) {
+            upBtn[0].classList.add('animated', 'fadeIn');
+            upBtn[0].classList.remove('fadeOut');
+        } else if (upBtn[0].classList.contains('animated')) {
+            upBtn[0].classList.add('animated', 'fadeOut');
+            upBtn[0].classList.remove('fadeIn');
         }
     });
 
-    const element: HTMLElement = document.documentElement;
-    const body: HTMLElement = document.body;
-
-    const calcScroll = ():void => {
-        upElem.addEventListener('click', (e:Event) => {
-            const target = (e.target as HTMLElement).parentElement?.parentElement as HTMLAnchorElement;
-            const scrollTop:number = Math.round(body.scrollTop || element.scrollTop);
-
-            if(target.hash != ''){
+    const scrollToElement = (btns: NodeListOf<HTMLAnchorElement>): void => {
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                let hashElement = document.querySelector(target.hash) as HTMLElement;
-                let hashElementTop:number = 0;
-
-                while(hashElement.offsetParent){
-                    hashElementTop += hashElement.offsetTop;
-                    hashElement = hashElement.offsetParent as HTMLElement || null;
-                }
-
-                hashElementTop = Math.round(hashElementTop);
-                smoothScroll(scrollTop, hashElementTop, target.hash);
-            }
-    });
-};
-
-const smoothScroll = (from:number, to:number, hash:string):void => {
-    const timeInterval:number = 1;
-    let prevScrollTop:number = 0;
-    let speed:number = 0;
-
-    if(to > from){
-        speed = 30;
-    }else{
-        speed = -30;
+                const hashElement = document.getElementById((btn.getAttribute('href') as string).substring(1)) as HTMLElement;
+                hashElement.scrollIntoView({ behavior: "smooth" });
+            })
+        })
     }
 
-    const move = setInterval(() => {
-        const scrollTop:number = Math.round(body.scrollTop || element.scrollTop);
-
-        if(prevScrollTop == scrollTop ||
-            (to > from && scrollTop >= to) ||
-            (to < from && scrollTop <= to)){
-                clearInterval(move);
-                history.replaceState(history.state, document.title, location.href.replace(/#.*$/g, '') + hash);
-        } else{
-            body.scrollTop += speed;
-            element.scrollTop += speed;
-            prevScrollTop = scrollTop;
-        }
-    }, timeInterval);
-};
-
-calcScroll();
+    scrollToElement(upBtn);
+    scrollToElement(stylesBtns);
+    scrollToElement(footerBtns);
+    scrollToElement(schemeBtns);
+    scrollToElement(portfolioBtns);
+    scrollToElement(oftenQuestionsBtns);
 
 };
+
