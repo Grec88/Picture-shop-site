@@ -1097,14 +1097,14 @@ h4 {
 
 .often-questions .accordion-block {
   background-color: #f7e7e6;
-  max-height:0;
-  opacity:0;
+  max-height: 0;
+  opacity: 0;
   transition: all 0.3s ease-out;
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.often-questions .accordion-block.active-content{
-  overflow:visible;
+.often-questions .accordion-block.active-content {
+  overflow: visible;
   opacity: 1;
   padding: 3rem 4rem;
   margin-top: 1rem;
@@ -1513,6 +1513,24 @@ h4 {
   border-radius: 4px;
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
+}
+
+.status {
+  text-align: center;
+}
+
+.pageup {
+  opacity: 1;
+  width: 26px;
+  height: 26px;
+  position: fixed;
+  bottom: 100px;
+  right: 5%;
+  z-index: 30;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: 1s all;
 }
 
 @media (max-width: 1399px) {
