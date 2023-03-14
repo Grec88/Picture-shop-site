@@ -42,5 +42,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     burger('.burger-menu', '.burger');
 
-    scrolling('.pageup');
+    scrolling({
+        upSelector: '.pageup',
+        stylesSelector: '[href="#styles"]',
+        portfolioSelector: "[href='#portfolio']",
+        oftenQuestionsSelector: "[href='#often-questions']",
+        footerSelector: "[href='#footer']",
+        schemeSelector:"[href='#scheme']"
+    });
+
 })
