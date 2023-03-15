@@ -1,7 +1,7 @@
 import {
     modals, sliders, form, mask, checkTextInputs,
     showMoreStyles, calc, filter, pictureSize,
-    accordion, burger, scrolling
+    accordion, burger, scrolling, drop
 } from "./modules";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -50,5 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
         footerSelector: "[href='#footer']",
         schemeSelector:"[href='#scheme']"
     });
+
+    drop();
 
 })
