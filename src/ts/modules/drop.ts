@@ -19,11 +19,8 @@ export const drop = ():void => {
 
     const unhighlight = (element:HTMLElement):void => {
         (element.closest('.file_upload') as HTMLElement).style.border = "none"; 
-        if(element.closest('.calc_form')){
-            (element.closest('.file_upload') as HTMLElement).style.backgroundColor = "#fff"; 
-        }else {
-            (element.closest('.file_upload') as HTMLElement).style.backgroundColor = "#ededed";
-        } 
+        element.closest('.calc_form') ? (element.closest('.file_upload') as HTMLElement).style.backgroundColor = "#fff" :
+        (element.closest('.file_upload') as HTMLElement).style.backgroundColor = "#ededed";
     }
 
     ["drageneter", "dragover"].forEach(eventName => {
