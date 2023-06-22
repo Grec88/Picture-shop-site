@@ -1,6 +1,4 @@
-Вот возможный текст для readme:
-
-# Picture Shop Site
+# [Picture Shop Site](https://deploy-preview-16--storied-chimera-be3b68.netlify.app/)
 
 This is a website for a fictional picture shop that sells prints and posters of various artworks. The website allows users to browse and search the catalog of products, view the details and reviews of each product, add products to the shopping cart, and place orders.
 
@@ -29,18 +27,7 @@ The website is built using:
 
 - **JavaScript**: the main programming language for the web
 - **TypeScript**: a superset of JavaScript that adds static typing and other features
-- **Webpack**: a module bundler and a build tool for JavaScript projects
-- **Babel**: a JavaScript compiler that allows using modern syntax and features
-- **ESLint**: a JavaScript linter that helps to find and fix code errors
-- **Prettier**: a code formatter that enforces a consistent style
-- **Husky**: a tool that enables running scripts on git hooks
-- **lint-staged**: a tool that runs linters on staged files
-- **Tailwind CSS**: a utility-first CSS framework for rapid UI development
-- **PostCSS**: a tool that transforms CSS with plugins
-- **Autoprefixer**: a PostCSS plugin that adds vendor prefixes to CSS rules
-- **CSSNano**: a PostCSS plugin that minifies CSS
-- **HTMLWebpackPlugin**: a Webpack plugin that simplifies creating HTML files
-- **CopyWebpackPlugin**: a Webpack plugin that copies files and folders to the output directory
+- **Vite**: a build tool and a development server for modern web projects
 
 ## Credits
 
